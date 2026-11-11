@@ -1,0 +1,347 @@
+/* ------------------------------------------------------------------
+   AURELLE design tokens
+   Contrast checks on ivory (#FAF6EF):
+   charcoal 13.9:1, warm grey 5.5:1, deep gold 5.2:1 (WCAG AA needs 4.5:1).
+   Champagne (#B8975A) is decorative only — never used for small text.
+   ------------------------------------------------------------------ */
+:root {
+  --ivory: #faf6ef;
+  --ivory-deep: #f3ece0;
+  --beige: #ede3d3;
+  --charcoal: #2a2623;
+  --charcoal-soft: #3d3833;
+  --warm-grey: #6b635a;
+  --line: #dcd2c2;
+  --champagne: #b8975a;
+  --gold-deep: #7e6334;
+  --error: #9b3b2e;
+  --success: #3f6b4a;
+
+  --font-display: 'Bodoni Moda Variable', 'Didot', 'Bodoni 72', Georgia, serif;
+  --font-body: 'Jost Variable', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: clamp(1.5rem, 1.2rem + 1vw, 1.875rem);
+  --step-3: clamp(2rem, 1.5rem + 2.2vw, 3rem);
+  --step-4: clamp(2.75rem, 1.8rem + 4.6vw, 5.5rem);
+
+  --space-xs: 0.5rem;
+  --space-s: 1rem;
+  --space-m: 1.5rem;
+  --space-l: 2.5rem;
+  --space-xl: clamp(3.5rem, 2rem + 6vw, 7.5rem);
+
+  --container: 1240px;
+  --gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
+  --header-height: 72px;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--ivory);
+  color: var(--charcoal);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.1;
+  margin: 0;
+  letter-spacing: -0.01em;
+  font-optical-sizing: auto;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+section[id] {
+  scroll-margin-top: calc(var(--header-height) + 8px);
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold-deep);
+  outline-offset: 3px;
+}
+
+.container {
+  width: min(var(--container), 100% - 2 * var(--gutter));
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: var(--space-xl);
+}
+
+.section-heading {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 38rem;
+  margin-bottom: var(--space-l);
+}
+
+.section-heading h2 {
+  font-size: var(--step-3);
+}
+
+.section-heading p {
+  color: var(--warm-grey);
+  max-width: 34rem;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background: var(--charcoal);
+  color: var(--ivory);
+  text-decoration: none;
+}
+
+/* Hidden until a keyboard user tabs to it. */
+.skip-link:not(:focus) {
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0.75rem 1.75rem;
+  border: 1px solid var(--charcoal);
+  border-radius: 2px;
+  background: var(--charcoal);
+  color: var(--ivory);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: background-color 200ms var(--ease), color 200ms var(--ease), border-color 200ms var(--ease);
+}
+
+@media (hover: hover) {
+  .btn:hover {
+    background: var(--charcoal-soft);
+  }
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--charcoal);
+}
+
+@media (hover: hover) {
+  .btn--outline:hover {
+    background: var(--charcoal);
+    color: var(--ivory);
+  }
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.btn--small {
+  min-height: 40px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.icon-button {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--charcoal);
+  transition: background-color 200ms var(--ease);
+}
+
+@media (hover: hover) {
+  .icon-button:hover {
+    background: rgba(42, 38, 35, 0.06);
+  }
+}
+
+.text-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--gold-deep);
+  font-size: 0.875rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (hover: hover) {
+  .text-link:hover {
+    color: var(--charcoal);
+  }
+}
+
+/* ---------- Toasts ---------- */
+.toast-region {
+  position: fixed;
+  left: 50%;
+  bottom: 1.25rem;
+  z-index: 80;
+  display: grid;
+  gap: 0.5rem;
+  width: min(420px, calc(100% - 2rem));
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.75rem 0.5rem 0.75rem 1rem;
+  background: var(--charcoal);
+  color: var(--ivory);
+  font-size: 0.875rem;
+  border-radius: 2px;
+  box-shadow: 0 12px 30px -12px rgba(42, 38, 35, 0.6);
+  pointer-events: auto;
+  animation: toast-in 240ms var(--ease);
+}
+
+.toast svg {
+  flex-shrink: 0;
+  color: var(--champagne);
+}
+
+.toast__message {
+  flex: 1;
+}
+
+.toast__action {
+  border: 0;
+  background: none;
+  color: var(--champagne);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+  padding: 0.25rem;
+}
+
+.toast__close {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: none;
+  color: var(--ivory);
+  opacity: 0.7;
+}
+
+@media (hover: hover) {
+  .toast__close:hover {
+    opacity: 1;
+  }
+}
+
+.toast :focus-visible {
+  outline-color: var(--champagne);
+}
+
+/* With a drawer open, show toasts inside it, under its header: clear of the
+   totals and Checkout button at every width, and next to what changed. */
+body.has-open-drawer .toast-region {
+  top: 5.25rem;
+  right: 1rem;
+  bottom: auto;
+  left: auto;
+  width: min(408px, calc(100% - 2rem));
+  transform: none;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

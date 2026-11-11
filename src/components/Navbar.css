@@ -1,0 +1,166 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(250, 246, 239, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 200ms var(--ease);
+}
+
+.navbar--scrolled {
+  border-bottom-color: var(--line);
+}
+
+.navbar__inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: var(--header-height);
+}
+
+.navbar__wordmark {
+  justify-self: start;
+  font-family: var(--font-display);
+  font-size: 1.625rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  text-decoration: none;
+  /* Visually balance the trailing letter-spacing. */
+  margin-right: -0.32em;
+}
+
+.navbar__links ul {
+  display: flex;
+  gap: 2.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navbar__links a {
+  position: relative;
+  padding-block: 0.5rem;
+  font-size: 0.9375rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.navbar__links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.15rem;
+  height: 1px;
+  background: var(--champagne);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 260ms var(--ease);
+}
+
+@media (hover: hover) {
+  .navbar__links a:hover::after,
+  .navbar__links a:focus-visible::after {
+    transform: scaleX(1);
+  }
+}
+
+.navbar__actions {
+  justify-self: end;
+  display: flex;
+  gap: 0.125rem;
+}
+
+.navbar__counted {
+  position: relative;
+}
+
+.navbar__count {
+  position: absolute;
+  top: 5px;
+  right: 3px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 9px;
+  background: var(--charcoal);
+  color: var(--ivory);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 18px;
+  text-align: center;
+}
+
+.navbar__menu-toggle {
+  display: none;
+}
+
+.navbar__mobile {
+  border-top: 1px solid var(--line);
+  background: var(--ivory);
+}
+
+.navbar__mobile ul {
+  margin-block: 0;
+  padding: 0.5rem 0 1.25rem;
+  list-style: none;
+}
+
+.navbar__mobile a {
+  display: block;
+  padding: 0.875rem 0;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.navbar__mobile li:last-child a {
+  border-bottom: 0;
+}
+
+@media (max-width: 899px) {
+  .navbar__links {
+    display: none;
+  }
+
+  .navbar__menu-toggle {
+    display: inline-grid;
+    justify-self: start;
+    margin-left: -10px;
+  }
+
+  .navbar__wordmark {
+    justify-self: center;
+    font-size: 1.25rem;
+    letter-spacing: 0.26em;
+    margin-right: -0.26em;
+  }
+}
+
+@media (min-width: 900px) {
+  .navbar__mobile {
+    display: none;
+  }
+}
+
+/* Narrow phones: three icons on the right leave too little room to centre the
+   wordmark, so it sits beside the menu button instead of colliding with the icons. */
+@media (max-width: 400px) {
+  .navbar__inner {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .navbar__wordmark {
+    justify-self: start;
+    margin-left: 2px;
+    font-size: 1.0625rem;
+    letter-spacing: 0.2em;
+  }
+
+  .navbar__actions .icon-button {
+    width: 40px;
+  }
+}

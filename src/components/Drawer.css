@@ -1,0 +1,249 @@
+.drawer__body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.drawer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1rem 1rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.drawer__header h2 {
+  font-size: var(--step-2);
+}
+
+/* The heading is only a programmatic focus target (see utils/focus.js). */
+.drawer__title:focus {
+  outline: none;
+}
+
+.drawer__count {
+  color: var(--warm-grey);
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+.drawer__empty {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 0.75rem;
+  flex: 1;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--warm-grey);
+}
+
+.drawer__empty-mark {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 0.25rem;
+  border: 1px solid var(--line);
+  border-radius: 999px 999px 4px 4px;
+  color: var(--gold-deep);
+}
+
+.drawer__empty p {
+  max-width: 28ch;
+}
+
+.drawer__empty h3 {
+  color: var(--charcoal);
+  font-size: var(--step-2);
+}
+
+.drawer__empty .btn {
+  margin-top: 0.75rem;
+}
+
+.shipping-meter {
+  padding: 1rem 1.5rem;
+  background: var(--ivory-deep);
+}
+
+.shipping-meter__text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.shipping-meter__text svg {
+  color: var(--gold-deep);
+  flex-shrink: 0;
+}
+
+.shipping-meter__track {
+  height: 3px;
+  margin-top: 0.625rem;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.shipping-meter__track span {
+  display: block;
+  height: 100%;
+  background: var(--gold-deep);
+  transform-origin: left;
+  transition: transform 400ms var(--ease);
+}
+
+.drawer__lines {
+  flex: 1;
+  margin: 0;
+  padding: 0 1.5rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  list-style: none;
+}
+
+.drawer-line {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr);
+  gap: 1rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.drawer-line:last-child {
+  border-bottom: 0;
+}
+
+.drawer-line__image {
+  aspect-ratio: 4 / 5;
+  background: var(--beige);
+  overflow: hidden;
+}
+
+.drawer-line__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.drawer-line__top {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.drawer-line__name {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  line-height: 1.25;
+}
+
+.drawer-line__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.5rem;
+  margin-top: 0.25rem;
+  color: var(--warm-grey);
+  font-size: 0.8125rem;
+}
+
+.drawer-line__meta span + span::before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+  background: var(--champagne);
+  vertical-align: middle;
+}
+
+.drawer-line__remove {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  margin: -6px -8px 0 0;
+  color: var(--warm-grey);
+}
+
+@media (hover: hover) {
+  .drawer-line__remove:hover {
+    color: var(--error);
+  }
+}
+
+.drawer-line__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.drawer-line__bottom .stepper button {
+  width: 34px;
+  height: 34px;
+}
+
+.drawer-line__total {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.drawer__footer {
+  padding: 1.25rem 1.5rem calc(1.25rem + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--line);
+  background: var(--ivory);
+}
+
+.drawer__totals {
+  display: grid;
+  gap: 0.375rem;
+  margin: 0 0 1rem;
+  font-size: 0.9375rem;
+}
+
+.drawer__totals div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.drawer__totals dt {
+  color: var(--warm-grey);
+}
+
+.drawer__totals dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.drawer__grand-total {
+  margin-top: 0.375rem;
+  padding-top: 0.625rem;
+  border-top: 1px solid var(--line);
+  font-size: 1.0625rem;
+  font-weight: 500;
+}
+
+.drawer__grand-total dt {
+  color: var(--charcoal);
+}
+
+.drawer__note {
+  margin-top: 0.75rem;
+  color: var(--warm-grey);
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.drawer__note--alert {
+  padding: 0.625rem 0.75rem;
+  background: var(--ivory-deep);
+  color: var(--charcoal);
+  font-size: 0.8125rem;
+}

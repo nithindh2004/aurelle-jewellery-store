@@ -1,0 +1,103 @@
+.hero {
+  padding-block: clamp(2rem, 1rem + 4vw, 5rem) var(--space-xl);
+  overflow: hidden;
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  align-items: center;
+  gap: clamp(2rem, 1rem + 4vw, 6rem);
+}
+
+.hero__title {
+  font-size: var(--step-4);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  max-width: 9ch;
+}
+
+.hero__lede {
+  margin-top: var(--space-m);
+  max-width: 30ch;
+  color: var(--warm-grey);
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  line-height: 1.55;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: var(--space-l);
+}
+
+.hero__visual {
+  position: relative;
+  justify-self: end;
+  width: min(100%, 560px);
+}
+
+/* The signature arch: a jharokha-style frame, echoed by the champagne outline behind it. */
+.hero__arch {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 999px 999px 4px 4px;
+  overflow: hidden;
+  background: var(--beige);
+}
+
+.hero__visual::before {
+  content: '';
+  position: absolute;
+  inset: -14px 14px 14px -14px;
+  border: 1px solid var(--champagne);
+  border-radius: 999px 999px 4px 4px;
+  pointer-events: none;
+}
+
+.hero__arch .smart-image {
+  animation: hero-settle 1400ms var(--ease) both;
+}
+
+@keyframes hero-settle {
+  from {
+    transform: scale(1.06);
+    opacity: 0.4;
+  }
+}
+
+@media (max-width: 899px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__visual {
+    order: -1;
+    justify-self: center;
+    width: min(100%, 420px);
+  }
+
+  .hero__arch {
+    aspect-ratio: 1 / 1;
+  }
+
+  .hero__title {
+    max-width: 12ch;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero__visual {
+    width: calc(100% - 28px);
+    margin-left: 14px;
+  }
+
+  .hero__arch {
+    aspect-ratio: 6 / 5;
+  }
+
+  .hero__actions .btn {
+    flex: 1 1 100%;
+  }
+}
