@@ -1,3 +1,11 @@
+## Live Demo
+
+Explore AURELLE: https://aurelle-jewellery-store-theta.vercel.app/
+
+## Source Code
+
+https://github.com/nithindh2004/aurelle-jewellery-store
+
 # AURELLE — Premium Jewellery Storefront
 
 AURELLE is an independent frontend portfolio project featuring a fictional premium jewellery storefront. The application demonstrates responsive interface design, React component architecture, product discovery, client-side state management, shopping-cart interactions and accessibility-oriented UI development.
